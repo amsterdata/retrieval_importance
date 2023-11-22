@@ -8,9 +8,25 @@ We provide a [Rust-based implementation of the weight learning algorithm](https:
 
 ## Source Code for the Experiments
 
- * The experiments for **question answering** are implemented in [question_answering_url.py](wikifact.py). The commandline argument ``-m`` specifies the metric to use (LOO, reweight, prune) and the argument  ``-s`` specifies the scenario ('raw' for no change in the retrieval corpus, 'noise' for adding noise to the retrieval corpus, and 'fake' for adding new wiki sources to the retrieval corpus).
- * The experiments for **data imputation** are implemented in  [imputation_experiment.py](imputation.py).
- * The experiment for the **computational performance** is implemented in [src/bin/synth_runtime.rs](synth_runtime.rs). This experiment can be executed via ``RUSTFLAGS="-C target-cpu=native" cargo run --release --bin synth_runtime``.
+### Improving Prediction Quality with Learned Data Importance
+
+#### Question Answering & Data Imputation
+ * The experiments for **question answering on the WikiFact relations** are implemented in [wikifact.py](wikifact.py) and TODO. 
+ * The experiments for **question answering on the WebQA dataset** are implemented in TODO and [webquestions_gpt3.py](webquestions_gpt3.py).
+ * The experiments for **data imputation** are implemented in [imputation.py](imputation.py) and [imputation_gpt3.py](imputation_gpt3.py).
+
+#### Mitigating the Impact of Noise in the Retrieval Corpus
+
+ * The experiments for **question answering on the WikiFact relations with synthetic noise** are implemented in [wikifact.py](wikifact.py), where one has to supply the argument  ``-s noise`` to specify the scenario where we add noise to the retrieval corpus.
+
+#### Application to GPT-3.5
+
+TODO
+
+#### Data Importance Beyond Large Language Models
+
+ * The experiment for improving the precision of a session-based recommender on ecommerce clicks are implemented in [reco.rs](src/bin/reco.rs). Note that we cannot share the click data for legal reasons.
+
 
 ## Local Installation
 
