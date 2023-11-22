@@ -1,10 +1,10 @@
 # retrieval_importance
 
-Implementation and experimentation code for the submission _Improving Retrieval-Augmented Large Language Models via Data Importance Learning_ to VLDB.
+Implementation and experimentation code for the paper on _Improving Retrieval-Augmented Large Language Models via Data Importance Learning_.
 
 ## Algorithm Implementation
 
-We provide a Rust-based [implementation of the weight learning algorithm](https://github.com/anon756/retrieval_importance/blob/main/src/lib.rs) (callable from Python via pyo3) and several [helper functions](https://github.com/anon756/retrieval_importance/blob/main/python/retrieval_importance/utils.py). 
+We provide a [Rust-based implementation of the weight learning algorithm](https://github.com/amsterdata/retrieval_importance/blob/main/src/mle/mod.rs) and corresponding [Python bindings](https://github.com/amsterdata/retrieval_importance/blob/main/src/lib.rs) via Pyo3.
 
 ## Source Code for the Experiments
 
@@ -12,7 +12,7 @@ We provide a Rust-based [implementation of the weight learning algorithm](https:
  * The experiments for **data imputation** are implemented in  [imputation_experiment.py](imputation.py).
  * The experiment for the **computational performance** is implemented in [src/bin/synth_runtime.rs](synth_runtime.rs). This experiment can be executed via ``RUSTFLAGS="-C target-cpu=native" cargo run --release --bin synth_runtime``.
 
-## Installation for development
+## Local Installation
 
  * Requires Python 3.9 and [Rust](https://www.rust-lang.org/tools/install) to be available
  
