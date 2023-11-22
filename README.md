@@ -17,7 +17,7 @@ We provide a [Rust-based implementation of the weight learning algorithm](https:
 
 #### Mitigating the Impact of Noise in the Retrieval Corpus
 
- * The experiments for **question answering on the WikiFact relations with synthetic noise** are implemented in [wikifact.py](wikifact.py), where one has to supply the argument  ``-s noise`` to specify the scenario where we add noise to the retrieval corpus.
+ * The experiments for **question answering on the noisy WikiFact relations** are implemented in [wikifact.py](wikifact.py), where one has to supply the argument  ``-s noise`` to specify the scenario where we add noise to the retrieval corpus.
 
 #### Application to GPT-3.5
 
@@ -25,8 +25,21 @@ TODO
 
 #### Data Importance Beyond Large Language Models
 
- * The experiment for improving the precision of a session-based recommender on ecommerce clicks are implemented in [reco.rs](src/bin/reco.rs). Note that we cannot share the click data for legal reasons.
+ * The experiment for **improving the precision of a session-based recommender** on ecommerce clicks is implemented in Rust in [reco.rs](src/bin/reco.rs). Note that we cannot share the click data for legal reasons.
 
+### Efficiency & Scalability 
+
+#### Microbenchmark for Optimisations in Computing Subset and Boundary Value Probabilities
+
+ * The corresponding microbenchmarks are implemented in Rust in [generate_iprp.rs](benches/generate_iprp.rs) and [generate_b.rs](benches/generate_b.rs).
+
+#### Microbenchmark for End-to-End Benefits
+ * The corresponding microbenchmark is implemented in Rust in [end_to_end_runtime.rs](src/bin/end_to_end_runtime.rs) 
+
+#### Scalability
+
+ * The scalability experiment with a synthetic corpus is implemented in Rust in [synth_runtime.rs](src/bin/synth_runtime.rs).
+ * The end-to-end runtimes for the click datasets are computed in Rust in [reco.rs](src/bin/reco.rs).
 
 ## Local Installation
 
