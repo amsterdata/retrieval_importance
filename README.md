@@ -1,6 +1,6 @@
 # retrieval_importance
 
-Implementation and experimentation code for the submission _Improving Retrieval-Augmented Large Language Models with Data-Centric Refinement_ to NeurIPS'23.
+Implementation and experimentation code for the submission _Improving Retrieval-Augmented Large Language Models via Data Importance Learning_ to VLDB.
 
 ## Algorithm Implementation
 
