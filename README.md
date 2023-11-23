@@ -6,6 +6,55 @@ Implementation and experimentation code for the paper on _Improving Retrieval-Au
 
 We provide a [Rust-based implementation of the weight learning algorithm](https://github.com/amsterdata/retrieval_importance/blob/main/src/mle/mod.rs) and corresponding [Python bindings](https://github.com/amsterdata/retrieval_importance/blob/main/src/lib.rs) via Pyo3.
 
+Below is a toy example of how to learn data importance weights for a retrieval corpus collected from the web:
+```python
+from retrieval_importance import learn_importance, encode_retrievals, encode_groups, v_grouped
+
+# Retrieval corpus for a question answering task collected from the web
+retrieval_corpus = [
+  { "question": "The author of Charon's Landing is",
+    "correct_answers": ["Jack Du Brul"],
+    "source_websites": ["en.wikipedia.org", "www.goodreads.com", "books.google.com", ...],
+    "generated_answers": ["Jack Du Brul", "Barbara Hambly", "Barbara Hambly", ...] },
+  { "question": "The author of Cathedral of the Sea is",
+    "correct_answers": ["Ildefonso Falcones", "Ildefonso Falcones de Sierra"],
+    "source_websites": ["en.wikipedia.org", "actualidadliteratura.com", "www.goodreads.com", ...],
+    "generated_answers": ["Ildefonso Falcones", "Ildefonso Falcones", "J. K. Rowling", ...]
+  },
+  ...
+]
+
+# Accuracy as utility function
+def utility(retrieval, prediction):
+    if prediction in retrieval["correct_answers"]:
+        return 1.0
+    else:
+        return 0.0
+
+# Grouping function to define data sources (web domains in this case)
+def group_by_domain(source_website):    
+    url_parts = tldextract.extract(source_website)
+    return f'{url_parts.domain}.{url_parts.suffix}'
+
+# Encode and group retrieval corpus
+encoded_corpus, mapping = encode_retrievals(retrieval_corpus, "source_websites", "generated_answers", utility)
+grouping, group_mapping = encode_groups(mapping, group_by_domain)
+
+# Importance weight learning
+importance_weights = learn_importance(encoded_corpus,
+                                      k=10,
+                                      learning_rate=40.0,
+                                      num_steps=50,
+                                      n_jobs=-1,
+                                      grouping=group_by_domain)
+
+# Importances per data source (web domains in this case)
+importance_weights_by_domain = v_grouped(importance_weights, group_by_domain, group_mapping)
+
+# The weights can subsequently be inspected and use to prune low-quality data sources from the retrieval corpus
+```
+
+
 ## Source Code for the Experiments
 
 ### Improving Prediction Quality with Learned Data Importance
