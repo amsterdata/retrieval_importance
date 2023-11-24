@@ -1,0 +1,6 @@
+{"relation": "applies_to_jurisdiction", "acc_baseline": 0.7179629629629629, "acc_reweight": 0.7498032407407409}
+{"relation": "author", "acc_baseline": 0.7117592592592592, "acc_reweight": 0.7410850694444445}
+{"relation": "award_received", "acc_baseline": 0.17944444444444443, "acc_reweight": 0.18744502314814815}
+{"relation": "basic_form_of_government", "acc_baseline": 0.34249999999999997, "acc_reweight": 0.39550347222222226}
+{"relation": "capital", "acc_baseline": 0.7555555555555556, "acc_reweight": 0.7693287037037035}
+{"relation": "average", "acc_baseline": 0.5414444444444444, "acc_reweight": 0.5686331018518519}
