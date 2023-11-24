@@ -61,7 +61,7 @@ importance_weights_by_domain = v_grouped(importance_weights, group_by_domain, gr
 
 #### Question Answering & Data Imputation
  * The experiments for **question answering on the WikiFact relations** are implemented in [wikifact.py](wikifact.py) and TODO. 
- * The experiments for **question answering on the WebQA dataset** are implemented in TODO and [webquestions_gpt3.py](webquestions_gpt3.py).
+ * The experiments for **question answering on the WebQA dataset** are implemented in [webquestions.py](webquestions.py). and [webquestions_gpt3.py](webquestions_gpt3.py).
  * The experiments for **data imputation** are implemented in [imputation.py](imputation.py) and [imputation_gpt3.py](imputation_gpt3.py).
 
 #### Mitigating the Impact of Noise in the Retrieval Corpus
@@ -70,7 +70,7 @@ importance_weights_by_domain = v_grouped(importance_weights, group_by_domain, gr
 
 #### Application to GPT-3.5
 
-TODO
+ * The experiments for improving the retrieval-augmented GPT-3.5 model are implemented in [importance_gpt3.py](wimportance_gpt3.py).
 
 #### Data Importance Beyond Large Language Models
 
