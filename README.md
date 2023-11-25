@@ -1,4 +1,4 @@
-# retrieval_importance
+# Improving Retrieval-Augmented Large Language Models via Data Importance Learning
 
 Implementation and experimentation code for the paper on _Improving Retrieval-Augmented Large Language Models via Data Importance Learning_.
 
