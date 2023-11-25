@@ -1,4 +1,4 @@
-# retrieval_importance
+# Improving Retrieval-Augmented Large Language Models via Data Importance Learning
 
 Implementation and experimentation code for the paper on _Improving Retrieval-Augmented Large Language Models via Data Importance Learning_.
 
@@ -6,9 +6,10 @@ Implementation and experimentation code for the paper on _Improving Retrieval-Au
 
 We provide a [Rust-based implementation of the weight learning algorithm](https://github.com/amsterdata/retrieval_importance/blob/main/src/mle/mod.rs) and corresponding [Python bindings](https://github.com/amsterdata/retrieval_importance/blob/main/src/lib.rs) via Pyo3.
 
-Below is a toy example of how to learn data importance weights for a retrieval corpus collected from the web:
+Below is example code showing how to learn data importance weights for a retrieval corpus collected from the web. In addition, we provide an [executable notebook with an end-to-end toy example](https://github.com/amsterdata/retrieval_importance/blob/main/example-question-answering.ipynb) that demonstrates how to improve prediction quality via data importance learning.
+
 ```python
-from retrieval_importance import learn_importance, encode_retrievals, encode_groups, v_grouped
+from retrieval_importance import learn_importance, encode_retrievals, encode_groups, grouped_weights
 
 # Retrieval corpus for a question answering task collected from the web
 retrieval_corpus = [
@@ -49,7 +50,7 @@ importance_weights = learn_importance(encoded_corpus,
                                       grouping=group_by_domain)
 
 # Importances per data source (web domains in this case)
-importance_weights_by_domain = v_grouped(importance_weights, group_by_domain, group_mapping)
+importance_weights_by_domain = grouped_weights(importance_weights, group_by_domain, group_mapping)
 
 # The weights can subsequently be inspected and use to prune low-quality data sources from the retrieval corpus
 ```
