@@ -9,7 +9,7 @@ use rand::distributions::{Distribution, Bernoulli};
 const LEARNING_RATE: f64 = 0.1;
 const NUM_STEPS: usize = 10;
 
-//RUSTFLAGS="-C target-cpu=native" cargo run --release --bin end_to_end_runtime |tee /Users/ssc/nextcloud/papers/mle-neurips/notebooks/end_to_end_runtime.csv
+//RUSTFLAGS="-C target-cpu=native" cargo run --release --bin end_to_end_runtime
 fn main() {
 
     let mut rng = thread_rng();
