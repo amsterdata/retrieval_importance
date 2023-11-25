@@ -6,7 +6,7 @@ Implementation and experimentation code for the paper on _Improving Retrieval-Au
 
 We provide a [Rust-based implementation of the weight learning algorithm](https://github.com/amsterdata/retrieval_importance/blob/main/src/mle/mod.rs) and corresponding [Python bindings](https://github.com/amsterdata/retrieval_importance/blob/main/src/lib.rs) via Pyo3.
 
-Below is a toy example of how to learn data importance weights for a retrieval corpus collected from the web. In addition, we provide an [executable notebook with an end-to-end toy example](https://github.com/amsterdata/retrieval_importance/blob/main/example-question-answering.ipynb) that shows how to improve prediction quality via data importance learning.
+Below is example code showing how to learn data importance weights for a retrieval corpus collected from the web. In addition, we provide an [executable notebook with an end-to-end toy example](https://github.com/amsterdata/retrieval_importance/blob/main/example-question-answering.ipynb) that demonstrates how to improve prediction quality via data importance learning.
 
 ```python
 from retrieval_importance import learn_importance, encode_retrievals, encode_groups, grouped_weights
