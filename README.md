@@ -8,7 +8,7 @@ We provide a [Rust-based implementation of the weight learning algorithm](https:
 
 Below is a toy example of how to learn data importance weights for a retrieval corpus collected from the web:
 ```python
-from retrieval_importance import learn_importance, encode_retrievals, encode_groups, v_grouped
+from retrieval_importance import learn_importance, encode_retrievals, encode_groups, grouped_weights
 
 # Retrieval corpus for a question answering task collected from the web
 retrieval_corpus = [
@@ -49,7 +49,7 @@ importance_weights = learn_importance(encoded_corpus,
                                       grouping=group_by_domain)
 
 # Importances per data source (web domains in this case)
-importance_weights_by_domain = v_grouped(importance_weights, group_by_domain, group_mapping)
+importance_weights_by_domain = grouped_weights(importance_weights, group_by_domain, group_mapping)
 
 # The weights can subsequently be inspected and use to prune low-quality data sources from the retrieval corpus
 ```
