@@ -1,4 +1,7 @@
 from pathlib import Path
+import numpy as np
+import json
+
 
 def encode_retrievals(retrievals, retrieved_key, prediction_key, utility):
 
@@ -49,6 +52,22 @@ def encode_groups(mapping, group):
     return grouping, group_mapping
 
 
+def grouped_weights(weights, grouping, group_mapping):
+
+    w_grouped = {}
+
+    retrieved_index_per_group = {}
+
+    for retrieved_index, group_index in enumerate(grouping):
+        retrieved_index_per_group[group_index] = retrieved_index
+        # TODO add break
+
+    for group, group_index in group_mapping.items():
+        w_grouped[group] = weights[retrieved_index_per_group[group_index]]
+
+    return w_grouped
+
+
 def v_grouped(v, grouping, group_mapping):
 
     v_per_group = {}
@@ -89,6 +108,24 @@ def least_important_groups(v_per_group, how_many):
     sorted_importances = sorted(v_per_group.items(), key=lambda x:x[1])
     return sorted_importances[:how_many]
 
+
 def get_project_root() -> Path:
     """Returns the project root folder."""
     return Path(__file__).parent.parent.parent
+
+
+def split(data, fraction):
+    # TODO should we make a deep copy of the data?
+    np.random.shuffle(data)
+    split_index = int(len(data) * fraction)
+    return data[:split_index], data[split_index:]
+
+
+def retrievals_from_json(path):
+    retrievals = []
+
+    with open(path) as file:
+        for line in file:
+            retrievals.append(json.loads(line))
+
+    return retrievals
