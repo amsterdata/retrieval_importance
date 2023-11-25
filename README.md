@@ -60,7 +60,7 @@ importance_weights_by_domain = v_grouped(importance_weights, group_by_domain, gr
 ### Improving Prediction Quality with Learned Data Importance
 
 #### Question Answering & Data Imputation
- * The experiments for **question answering on the WikiFact relations** are implemented in [wikifact.py](wikifact.py) and TODO. 
+ * The experiments for **question answering on the selection of 70 WikiFact relations** are implemented in [wikifact.py](wikifact.py) and taken from the [HELM API](https://crfm-helm.readthedocs.io/en/latest/scenarios/#helm.benchmark.scenarios.wikifact_scenario) for GPT-3.5. 
  * The experiments for **question answering on the WebQA dataset** are implemented in [webquestions.py](webquestions.py). and [webquestions_gpt3.py](webquestions_gpt3.py).
  * The experiments for **data imputation** are implemented in [imputation.py](imputation.py) and [imputation_gpt3.py](imputation_gpt3.py).
 
